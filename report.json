@@ -1,0 +1,201 @@
+{
+  "report": {
+    "best_practices": {
+      "analytics": {
+        "exempt": false,
+        "failed": false,
+        "passed": false
+      },
+      "artifacthub_badge": {
+        "exempt": false,
+        "failed": false,
+        "passed": false
+      },
+      "cla": {
+        "exempt": true,
+        "exemption_reason": "DCO check passed",
+        "failed": false,
+        "passed": false
+      },
+      "community_meeting": {
+        "exempt": false,
+        "failed": false,
+        "passed": false
+      },
+      "dco": {
+        "exempt": false,
+        "failed": false,
+        "passed": true
+      },
+      "github_discussions": {
+        "exempt": false,
+        "failed": false,
+        "passed": true,
+        "url": "https://github.com/communitybridge/easycla/discussions/3573"
+      },
+      "openssf_badge": {
+        "exempt": false,
+        "failed": false,
+        "passed": false
+      },
+      "recent_release": {
+        "exempt": false,
+        "failed": false,
+        "passed": true,
+        "url": "https://github.com/communitybridge/easycla/releases/tag/v2.0.118"
+      },
+      "slack_presence": {
+        "exempt": true,
+        "exemption_reason": "GitHub discussions check passed",
+        "failed": false,
+        "passed": false
+      }
+    },
+    "documentation": {
+      "adopters": {
+        "exempt": false,
+        "failed": false,
+        "passed": false
+      },
+      "changelog": {
+        "exempt": false,
+        "failed": false,
+        "passed": true
+      },
+      "code_of_conduct": {
+        "exempt": false,
+        "failed": false,
+        "passed": false
+      },
+      "contributing": {
+        "exempt": false,
+        "failed": false,
+        "passed": true,
+        "url": "https://github.com/communitybridge/easycla/blob/main/contributing.md"
+      },
+      "governance": {
+        "exempt": false,
+        "failed": false,
+        "passed": false
+      },
+      "maintainers": {
+        "exempt": false,
+        "failed": false,
+        "passed": false
+      },
+      "readme": {
+        "exempt": false,
+        "failed": false,
+        "passed": true,
+        "url": "https://github.com/communitybridge/easycla/blob/main/README.md"
+      },
+      "roadmap": {
+        "exempt": false,
+        "failed": false,
+        "passed": true,
+        "url": "https://github.com/communitybridge/easycla/blob/main/roadmap.md"
+      },
+      "website": {
+        "exempt": false,
+        "failed": false,
+        "passed": true,
+        "url": "https://easycla.lfx.linuxfoundation.org"
+      }
+    },
+    "legal": {
+      "trademark_disclaimer": {
+        "exempt": false,
+        "failed": false,
+        "passed": false
+      }
+    },
+    "license": {
+      "license_approved": {
+        "exempt": false,
+        "failed": false,
+        "passed": true,
+        "value": true
+      },
+      "license_scanning": {
+        "exempt": false,
+        "failed": false,
+        "passed": false
+      },
+      "license_spdx_id": {
+        "exempt": false,
+        "failed": false,
+        "passed": true,
+        "value": "MIT"
+      }
+    },
+    "security": {
+      "binary_artifacts": {
+        "details": "# Binary-Artifacts OpenSSF Scorecard check\n\n**Score**: 9 (check passes with score >= 5)\n\n**Reason**: binaries present in source code\n\n**Details**: \n\n>Warn: binary detected: cla-backend/auth/bin/authorizer:1\n\n**Please see the [check documentation](https://github.com/ossf/scorecard/blob/2cbf5afd5460b51fd40939f8c44b32543b1a0bcb/docs/checks.md#binary-artifacts) in the ossf/scorecard repository for more details**",
+        "exempt": false,
+        "failed": false,
+        "passed": true
+      },
+      "code_review": {
+        "details": "# Code-Review OpenSSF Scorecard check\n\n**Score**: 9 (check passes with score >= 5)\n\n**Reason**: GitHub code reviews found for 28 commits out of the last 30 -- score normalized to 9\n\n**Details**: \n\n>Warn: no reviews found for commit: c6ac7bff5ef0c723b9c9b35afbd451c38668c2fd\nWarn: no reviews found for commit: 8d0888440e4dcd3fe528516c9f1906061174ae10\n\n**Please see the [check documentation](https://github.com/ossf/scorecard/blob/2cbf5afd5460b51fd40939f8c44b32543b1a0bcb/docs/checks.md#code-review) in the ossf/scorecard repository for more details**",
+        "exempt": false,
+        "failed": false,
+        "passed": true
+      },
+      "dangerous_workflow": {
+        "details": "# Dangerous-Workflow OpenSSF Scorecard check\n\n**Score**: 10 (check passes with score >= 5)\n\n**Reason**: no dangerous workflow patterns detected\n\n**Details**: -\n\n**Please see the [check documentation](https://github.com/ossf/scorecard/blob/2cbf5afd5460b51fd40939f8c44b32543b1a0bcb/docs/checks.md#dangerous-workflow) in the ossf/scorecard repository for more details**",
+        "exempt": false,
+        "failed": false,
+        "passed": true
+      },
+      "dependency_update_tool": {
+        "details": "# Dependency-Update-Tool OpenSSF Scorecard check\n\n**Score**: 10 (check passes with score >= 5)\n\n**Reason**: update tool detected\n\n**Details**: \n\n>Info: Dependabot detected\n\n**Please see the [check documentation](https://github.com/ossf/scorecard/blob/2cbf5afd5460b51fd40939f8c44b32543b1a0bcb/docs/checks.md#dependency-update-tool) in the ossf/scorecard repository for more details**",
+        "exempt": false,
+        "failed": false,
+        "passed": true
+      },
+      "maintained": {
+        "details": "# Maintained OpenSSF Scorecard check\n\n**Score**: 10 (check passes with score >= 5)\n\n**Reason**: 30 commit(s) out of 30 and 23 issue activity out of 30 found in the last 90 days -- score normalized to 10\n\n**Details**: -\n\n**Please see the [check documentation](https://github.com/ossf/scorecard/blob/2cbf5afd5460b51fd40939f8c44b32543b1a0bcb/docs/checks.md#maintained) in the ossf/scorecard repository for more details**",
+        "exempt": false,
+        "failed": false,
+        "passed": true
+      },
+      "sbom": {
+        "exempt": false,
+        "failed": false,
+        "passed": false
+      },
+      "security_policy": {
+        "exempt": false,
+        "failed": false,
+        "passed": true,
+        "url": "https://github.com/communitybridge/easycla/blob/main/SECURITY.md"
+      },
+      "signed_releases": {
+        "details": "# Signed-Releases OpenSSF Scorecard check\n\n**Score**: -1 (check passes with score >= 1)\n\n**Reason**: no releases found\n\n**Details**: \n\n>Warn: no GitHub releases found\n\n**Please see the [check documentation](https://github.com/ossf/scorecard/blob/2cbf5afd5460b51fd40939f8c44b32543b1a0bcb/docs/checks.md#signed-releases) in the ossf/scorecard repository for more details**",
+        "exempt": false,
+        "failed": false,
+        "passed": false
+      },
+      "token_permissions": {
+        "details": "# Token-Permissions OpenSSF Scorecard check\n\n**Score**: 0 (check passes with score >= 5)\n\n**Reason**: non read-only tokens detected in GitHub workflows\n\n**Details**: \n\n>Warn: no topLevel permission defined: .github/workflows/codeql-analysis.yml:1: update your workflow using https://app.stepsecurity.io/secureworkflow/communitybridge/easycla/codeql-analysis.yml/main?enable=permissions\n\n**Please see the [check documentation](https://github.com/ossf/scorecard/blob/2cbf5afd5460b51fd40939f8c44b32543b1a0bcb/docs/checks.md#token-permissions) in the ossf/scorecard repository for more details**",
+        "exempt": false,
+        "failed": false,
+        "passed": false
+      }
+    }
+  },
+  "score": {
+    "best_practices": 25.0,
+    "best_practices_weight": 20,
+    "documentation": 70.0,
+    "documentation_weight": 30,
+    "global": 58.94736842105263,
+    "global_weight": 95,
+    "legal": 0.0,
+    "legal_weight": 5,
+    "license": 75.0,
+    "license_weight": 20,
+    "security": 75.0,
+    "security_weight": 20
+  }
+}
