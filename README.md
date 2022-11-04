@@ -76,6 +76,15 @@ displayed:
 Error: repository field not found in github medatata response
 ```
 
+## Reports
+
+The resulting output from the CLO Monitor linter tool can be in either text or
+JSON output.  Use the `--format` command line option to set the output format.
+Here are two report examples:
+
+- report example in the [text format](report-example.md)
+- report example in the [json format](report.json)
+
 ## License
 
 Copyright The Linux Foundation and each contributor to LFX.
