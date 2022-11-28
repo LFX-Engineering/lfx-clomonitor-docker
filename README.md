@@ -10,7 +10,15 @@ companion [OSSF scorecard tool](https://github.com/ossf/scorecard).
 To build the docker image, run the following command:
 
 ```bash
-docker build --tag lfx-clomonitor:latest .
+docker build --tag lfx-clomonitor-docker:latest .
+```
+
+## Pull Docker Image
+
+To pull the prebuilt docker image from this repo, run the following command:
+
+```bash
+docker pull ghcr.io/LFX-Engineering/lfx-clomonitor-docker:latest
 ```
 
 ## Run Docker Image
@@ -52,7 +60,7 @@ Below are some examples of running the docker image:
 docker run -it \
   -e GITHUB_TOKEN="${GITHUB_TOKEN}" \
   -v "${PWD}/data:/data" \
-  lfx-clomonitor:latest \
+  lfx-clomonitor-docker:latest \
   /app/clomonitor-linter \
   --path /data/easycla \
   --url https://github.com/communitybridge/easycla \
