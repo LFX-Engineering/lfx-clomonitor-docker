@@ -12,9 +12,6 @@ on:
 
 env:
   STAGE: dev
-  REGION: us-east-2
-  REPOSITORY: lfx-clomonitor
-  ECR_HOST: ${{secrets.AWS_ACCOUNT_ID}}.dkr.ecr.us-east-2.amazonaws.com
 
 jobs:
   docker-build-pr:
@@ -23,20 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-2
-          role-duration-seconds: 900
-
       - name: Build Docker Image
         run: |
-          echo "Building image with tag: ${ECR_HOST}/${REPOSITORY}:${{github.sha}}"
-          docker build --tag ${ECR_HOST}/${REPOSITORY}:${{github.sha}} .
-
-      - name: Tag Docker Image
-        run: |
-          echo "Tagging image with tag: ${ECR_HOST}/${REPOSITORY}:latest"
-          docker image tag ${ECR_HOST}/${REPOSITORY}:${GITHUB_SHA} ${ECR_HOST}/${REPOSITORY}:latest
+          echo "Building image"
+          docker build --tag lfx-clomonitor-docker:latest .
