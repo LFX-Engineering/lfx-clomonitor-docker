@@ -37,7 +37,7 @@ RUN apt-get update && apt-get install -y curl git jq && apt upgrade -y && rm -rf
 COPY --from=build_scorecard scorecard scorecard
 COPY --from=build_clomonitor_linter clomonitor-linter clomonitor-linter
 
-# Update PATH 
-ENV PATH="$PATH:./"
+# Update PATH
+ENV PATH="$PATH:./:/app"
 
 CMD [ "/app/clomonitor-linter" ]
