@@ -123,36 +123,20 @@ on:
     branches:
       - main
 
-env:
-  STAGE: prod
-  REGION: us-east-2
-  REPOSITORY: lfx-clomonitor
-  ECR_HOST: ${{secrets.AWS_ACCOUNT_ID}}.dkr.ecr.us-east-2.amazonaws.com
-
 jobs:
   clo-monitor-report:
-    runs-on: ubuntu-latest
     environment: dev
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/lfx-engineering/lfx-clomonitor-docker:latest
+      env:
+        GITHUB_TOKEN: ${{ secrets.CLOMONITOR_GITHUB_TOKEN }}
+      volumes:
+        - ${{ github.workspace }}:${{ github.workspace }}
     steps:
-      - uses: actions/checkout@v3
-#      - name: Configure AWS Credentials
-#        uses: aws-actions/configure-aws-credentials@v1
-#        with:
-#          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#          aws-region: us-east-2
-#          role-duration-seconds: 900
-
-# TODO: Uncomment these lines after we have published the ECR image to the repo
-#      - name: Pull ECR Image
-#        run: |
-#          echo "Showing caller identity..."
-#          aws sts get-caller-identity
-#          echo "Logging into ECR..."
-#          aws ecr get-login-password --region ${REGION} | docker login --username AWS --password-stdin ${ECR_HOST}/${REPOSITORY}
-#
-#          echo "Pulling image with tag: ${ECR_HOST}/${REPOSITORY}:latest"
-#          docker pull ${ECR_HOST}/${REPOSITORY}:latest
+      - name: Run CLO Monitor
+        run: |
+          /app/clomonitor-linter --path ${{ github.workspace }} --url https://github.com/LF-Engineering/lfx-redshift-migration
 
 ```
 
