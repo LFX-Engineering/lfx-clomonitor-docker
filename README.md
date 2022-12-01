@@ -109,9 +109,24 @@ reviewed or used to fail the CI/CD pipeline.
 
 The following is an example of a GitHub Actions workflow that runs the CLO Monitor linter tool.
 
-In the following example, the YAML file is placed in the repository `.github/workflows` directory. The workflow is
-triggered when a pull request is created or updated. The workflow will run the CLO Monitor linter tool and generate
-a report.
+In the following example, the `clomonitor-pr.ymal` file is placed in the repository `.github/workflows` directory. The
+workflow is triggered when a pull request is created or updated. The workflow will run the CLO Monitor linter tool and
+generate a report.
+
+To summarize, the workflow does the following:
+
+- Runs when a pull request is created with the target of the `main` branch. 
+- A workflow job is created to run the CLO Monitor linter tool. The job leverages the pre-built lfx-clomonitor-docker
+  container
+- The container must have the GITHUB_TOKEN environment variable set as the tool requires this to communicate to the
+  GitHub API.
+- The workspace volume is mounted to the container so the tool can access the repository files.
+- The repository is checked out to the workspace volume.
+- The tool is executed with the options of where the local repostiory is located, the repository URL. In this case, the
+  default check-set options are used since no check-set options are specified.
+- After the job runs, the results will be displayed in the GitHub Actions log.
+- The `continue-on-error` option is used as we want the workflow to continue even if the CLO Monitor linter tool reports
+  a failing grade.
 
 ```yaml
 ---
@@ -125,19 +140,22 @@ on:
 
 jobs:
   clo-monitor-report:
-    environment: dev
+    environment: dev # optional, used to pull environment variables from the specified environment configuration
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/lfx-engineering/lfx-clomonitor-docker:latest
       env:
+        # Must have a GitHub token with read access to the repository
         GITHUB_TOKEN: ${{ secrets.CLOMONITOR_GITHUB_TOKEN }}
       volumes:
-        - ${{ github.workspace }}:${{ github.workspace }}
+        - ${{ github.workspace }}:/${{ github.event.repository.name }}
     steps:
+      - uses: actions/checkout@v3
       - name: Run CLO Monitor
+        continue-on-error: true
+        working-directory: /app
         run: |
-          /app/clomonitor-linter --path ${{ github.workspace }} --url https://github.com/LF-Engineering/lfx-redshift-migration
-
+          /app/clomonitor-linter --path /${{ github.event.repository.name }} --url ${{ github.server_url }}/${{ github.repository }}
 ```
 
 ## License
