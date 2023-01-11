@@ -1,0 +1,37 @@
+---
+# Copyright The Linux Foundation and each contributor to LFX.
+# SPDX-License-Identifier: MIT
+
+name: Snyk Scan Docker
+
+on:
+  workflow_run:
+    workflows: [Docker Push]
+    types: [completed]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+          SNYK_ORG: ${{ secrets.SNYK_ORG }}
+        with:
+          command: container
+          args: test ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref }} --org=${{ secrets.SNYK_ORG }} --file=Dockerfile
+      - name: Run Snyk to upload vulnerabilities
+        uses: snyk/actions/node@master
+        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+          SNYK_ORG: ${{ secrets.SNYK_ORG }}
+        with:
+          command: container
+          args: monitor ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref }} --org=${{ secrets.SNYK_ORG }} --file=Dockerfile
