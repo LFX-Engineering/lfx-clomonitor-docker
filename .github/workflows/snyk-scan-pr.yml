@@ -25,7 +25,7 @@ jobs:
           SNYK_ORG: ${{ secrets.SNYK_ORG }}
         with:
           command: container
-          args: test ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref }} --org=${{ secrets.SNYK_ORG }} --file=Dockerfile
+          args: test ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest --org=${{ secrets.SNYK_ORG }} --file=Dockerfile
       - name: Run Snyk to upload vulnerabilities
         uses: snyk/actions/node@master
         continue-on-error: true
@@ -34,4 +34,4 @@ jobs:
           SNYK_ORG: ${{ secrets.SNYK_ORG }}
         with:
           command: container
-          args: monitor ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref }} --org=${{ secrets.SNYK_ORG }} --file=Dockerfile
+          args: monitor ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest --org=${{ secrets.SNYK_ORG }} --file=Dockerfile
