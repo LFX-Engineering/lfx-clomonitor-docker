@@ -30,8 +30,8 @@ RUN cargo install --git https://github.com/cncf/clomonitor clomonitor-linter && 
 FROM ubuntu:22.04
 WORKDIR /app
 
-# Install additional tools
-RUN apt-get update && apt-get install -y curl git jq && apt upgrade -y && rm -rf /var/lib/apt/lists/*
+# Update, upgrade to resolve security vulnerabilities, and install additional tools
+RUN apt-get update && apt upgrade -y && apt-get install -y curl git jq && apt upgrade -y && rm -rf /var/lib/apt/lists/*
 
 # Copy over the tools into the docker image
 COPY --from=build_scorecard scorecard scorecard
